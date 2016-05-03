@@ -1,20 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
-class EmployeeList extends Component { // class ?
-
-  render() {
-    return (
-      <ul>
-        {this.props.employees.map(person =>
-          <li key={person.id}>
-            {person.name} - {person.position}
-          </li>
-        )}
-      </ul>
-    );
-  }
-}
+const EmployeeList = ({employees}) => (
+  <ul>
+    {employees.map(person =>
+      <li key={person.id}>
+        {person.name} - {person.position}
+      </li>
+    )}
+  </ul>
+)
 
 const getEmployeeList = (employees, position) => {
   if (position) {
@@ -27,6 +22,10 @@ const mapStateToProps = (state) => {
   return {
     employees: getEmployeeList(state.employees, state.positionFilter)
   }
+}
+
+EmployeeList.propTypes = {
+  // @TODO complete
 }
 
 export default connect(mapStateToProps)(EmployeeList)
