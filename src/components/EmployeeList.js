@@ -15,8 +15,7 @@ EmployeeList.propTypes = {
   employees: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    position: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    position: PropTypes.string.isRequired
   }).isRequired).isRequired
 }
 
