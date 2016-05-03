@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { setPositionFilter } from '../actions'
 
@@ -27,6 +27,11 @@ const PositionFilter = ({positions, currentFilter, filterPositions}) => (
     )}
   </div>
 )
+
+PositionFilter.propTypes = {
+  positions: PropTypes.array.isRequired,
+  filterPositions: PropTypes.func.isRequired
+}
 
 const positionList = ['Architect', 'Dev'] // @TODO - to a separate state object (reducer)
 
