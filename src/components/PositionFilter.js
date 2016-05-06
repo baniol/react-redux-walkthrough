@@ -3,15 +3,14 @@ import { connect } from 'react-redux'
 import { setPositionFilter } from '../actions'
 
 let spanStyle = (pos, currentFilter) => {
-  let s = {
-    marginRight: 10,
-    cursor: 'pointer'
+  let style = {
+    cursor: 'pointer',
+    padding: '3px 5px'
   }
   if (pos === currentFilter) {
-    s['backgroundColor'] = 'grey'
+    style.backgroundColor = 'silver'
   }
-  // @TODO ugly - refactor
-  return s
+  return style
 }
 
 const PositionFilter = ({positions, currentFilter, filterPositions}) => (
@@ -33,7 +32,7 @@ PositionFilter.propTypes = {
   filterPositions: PropTypes.func.isRequired
 }
 
-const positionList = ['Architect', 'Dev'] // @TODO - to a separate state object (reducer)
+const positionList = ['Software Architect', 'Web Developer', 'Java Developer', 'Project Manager'] // @TODO - to a separate state object (reducer)
 
 const mapStateToProps = (state) => {
   return {
