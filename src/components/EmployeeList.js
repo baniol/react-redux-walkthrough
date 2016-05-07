@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-const EmployeeList = ({employees}) => (
+export const EmployeeList = ({employees}) => (
   <ul>
     {employees.map(person =>
       <li key={person.id}>

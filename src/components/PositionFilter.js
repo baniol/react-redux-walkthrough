@@ -13,7 +13,7 @@ let spanStyle = (pos, currentFilter) => {
   return style
 }
 
-const PositionFilter = ({positions, currentFilter, filterPositions}) => (
+export const PositionFilter = ({positions, currentFilter, filterPositions}) => (
   <div>
     {positions.map(position =>
       <span
