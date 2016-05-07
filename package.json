@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
-    "test": "mocha './src/test/**/*.spec.js' --compilers js:babel-register --require ./src/test/setup.js",
+    "test": "mocha './src/test/**/*.spec.js' --compilers js:babel-register",
     "test:watch": "npm test -- --watch"
   },
   "repository": {

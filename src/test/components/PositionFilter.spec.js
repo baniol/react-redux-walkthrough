@@ -1,7 +1,7 @@
 import expect from 'expect'
 import React from 'react'
 import sinon from 'sinon'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { PositionFilter } from '../../components/PositionFilter'
 
 let wrapper
