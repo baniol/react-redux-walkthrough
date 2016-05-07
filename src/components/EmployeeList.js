@@ -19,6 +19,7 @@ EmployeeList.propTypes = {
   }).isRequired).isRequired
 }
 
+// @TODO how to test this - dependency of employee list from the filter ?
 const getEmployeeList = (employees, position) => {
   if (position) {
     return employees.filter(p => p.position === position)

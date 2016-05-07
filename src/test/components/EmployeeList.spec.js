@@ -27,5 +27,10 @@ describe('EmployeeList component', () => {
     expect(wrapper.find('ul').length).toEqual(1)
     expect(wrapper.find('li').length).toEqual(2)
   });
-  // @TODO more tests
+  it('Should render employee data in the first li as text', () => {
+    expect(wrapper.find('li').first().text()).toEqual('Reese Hardin - Web Developer')
+  });
+  it('Should render employee data in the second li as text', () => {
+    expect(wrapper.find('li').at(1).text()).toEqual('Cora Ashley - Java Developer')
+  });
 });

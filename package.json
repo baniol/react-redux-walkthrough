@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
-    "test": "node_modules/mocha/bin/_mocha --compilers js:babel-register --require ./src/test/setup.js --recursive $(find src/test -path '*spec*')",
+    "test": "mocha './src/test/**/*.spec.js' --compilers js:babel-register --require ./src/test/setup.js",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
