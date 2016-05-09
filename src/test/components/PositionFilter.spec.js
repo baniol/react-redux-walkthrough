@@ -24,4 +24,11 @@ describe('PositionFilter component', () => {
     wrapper.find('span').first().simulate('click');
     expect(onFilterClick.calledOnce).toEqual(true);
   });
+  it('Should have filter item not highlighted', () => {
+    expect(wrapper.find('span').first().props().style).toExclude({backgroundColor: 'silver'})
+  });
+  it('Should highlight the current filter', () => {
+    wrapper.setProps({currentFilter: 'Software Architect'})
+    expect(wrapper.find('span').first().props().style).toInclude({backgroundColor: 'silver'})
+  });
 });
