@@ -1,7 +1,7 @@
 export default (state=[], action) => {
   switch(action.type) {
-    case 'FETCH_PEOPLE':
-      return action.people
+    case 'FETCH_EMPLOYEES':
+      return action.employees
     default:
       return state
   }

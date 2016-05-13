@@ -14,25 +14,21 @@ function makeRequest() {
   }
 }
 
-function returnPeople(people) {
+function returnEmployees(employees) {
   return {
-    type: 'FETCH_PEOPLE',
-    people,
+    type: 'FETCH_EMPLOYEES',
+    employees,
     loader: false
   }
 }
 
-export const fetchPeople = () => {
+export const fetchEmployees = () => {
   return dispatch => {
     dispatch(makeRequest())
     return fetch('http://localhost:3001')
       .then(response => response.json())
       .then(json => {
-        // if (json.status >= 400) {
-        //   dispatch(requestError(json.errors))
-        // } else {
-          dispatch(returnPeople(json))
-        // }
+        dispatch(returnEmployees(json))
       })
   }
 }

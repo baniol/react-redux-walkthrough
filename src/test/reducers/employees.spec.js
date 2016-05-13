@@ -5,6 +5,6 @@ describe('employees reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {}).length
-    ).toEqual(10)
+    ).toEqual(0)
   })
 })

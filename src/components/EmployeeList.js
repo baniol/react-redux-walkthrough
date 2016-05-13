@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchPeople } from '../actions'
+import { fetchEmployees } from '../actions'
 
 export class EmployeeList extends Component {
 
@@ -9,11 +9,11 @@ export class EmployeeList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPeople()
+    this.props.fetchEmployees()
   }
 
   render () {
-    var loader = this.props.loader ? <div>Loading ...</div> : ''
+    let loader = this.props.loader ? <div>Loading ...</div> : ''
     return (
       <div>
         {loader}
@@ -34,7 +34,8 @@ EmployeeList.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     position: PropTypes.string.isRequired
-  }).isRequired).isRequired
+  }).isRequired).isRequired,
+  loader: PropTypes.bool
 }
 
 export const getEmployeeList = (employees, position) => {
@@ -53,7 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPeople: () => {dispatch(fetchPeople())}
+    fetchEmployees: () => {dispatch(fetchEmployees())}
   }
 }
 
