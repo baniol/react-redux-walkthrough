@@ -21,13 +21,18 @@ describe('EmployeeList component', () => {
   beforeEach(() => {
     let props = {
       employees: employeeData,
-      loader: false
+      loader: false,
+      errors: null
     }
     wrapper = shallow(<EmployeeList {...props} />)
   })
   it('Should render loader', () => {
     wrapper.setProps({loader: true})
     expect(wrapper.find('div.loader').text()).toEqual('Loading ...')
+  })
+  it('Should render errors', () => {
+    wrapper.setProps({errors: 'Some Error String'})
+    expect(wrapper.find('div.error-msg').text()).toEqual('Some Error String')
   })
   it('Should render the ul and li elements', () => {
     expect(wrapper.find('ul').length).toEqual(1)
