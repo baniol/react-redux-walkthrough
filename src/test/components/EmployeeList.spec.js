@@ -20,9 +20,14 @@ let employeeData = [
 describe('EmployeeList component', () => {
   beforeEach(() => {
     let props = {
-      employees: employeeData
+      employees: employeeData,
+      loader: false
     }
     wrapper = shallow(<EmployeeList {...props} />)
+  })
+  it('Should render loader', () => {
+    wrapper.setProps({loader: true})
+    expect(wrapper.find('div.loader').text()).toEqual('Loading ...')
   })
   it('Should render the ul and li elements', () => {
     expect(wrapper.find('ul').length).toEqual(1)

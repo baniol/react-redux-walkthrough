@@ -13,7 +13,7 @@ export class EmployeeList extends Component {
   }
 
   render () {
-    let loader = this.props.loader ? <div>Loading ...</div> : ''
+    let loader = this.props.loader ? <div className="loader">Loading ...</div> : ''
     let errorMsg = this.props.errors ? <div>{this.props.errors}</div> : ''
     return (
       <div>
