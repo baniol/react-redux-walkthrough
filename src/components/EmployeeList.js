@@ -1,15 +1,33 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { fetchPeople } from '../actions'
 
-export const EmployeeList = ({employees}) => (
-  <ul>
-    {employees.map(person =>
-      <li key={person.id}>
-        {person.name} - {person.position}
-      </li>
-    )}
-  </ul>
-)
+export class EmployeeList extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.props.fetchPeople()
+  }
+
+  render () {
+    var loader = this.props.loader ? <div>Loading ...</div> : ''
+    return (
+      <div>
+        {loader}
+        <ul>
+          {this.props.employees.map(person =>
+            <li key={person.id}>
+              {person.name} - {person.position}
+            </li>
+          )}
+        </ul>
+      </div>
+    )
+  }
+}
 
 EmployeeList.propTypes = {
   employees: PropTypes.arrayOf(PropTypes.shape({
@@ -28,8 +46,15 @@ export const getEmployeeList = (employees, position) => {
 
 const mapStateToProps = (state) => {
   return {
-    employees: getEmployeeList(state.employees, state.positionFilter)
+    employees: getEmployeeList(state.employees, state.positionFilter),
+    loader: state.loader
   }
 }
 
-export default connect(mapStateToProps)(EmployeeList)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPeople: () => {dispatch(fetchPeople())}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeList)
