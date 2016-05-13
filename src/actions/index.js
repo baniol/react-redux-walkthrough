@@ -14,6 +14,14 @@ function makeRequest() {
   }
 }
 
+function requestError(error) {
+  return {
+    type: 'REQUEST_ERROR',
+    error,
+    loader: false
+  }
+}
+
 function returnEmployees(employees) {
   return {
     type: 'FETCH_EMPLOYEES',
@@ -27,8 +35,7 @@ export const fetchEmployees = () => {
     dispatch(makeRequest())
     return fetch('http://localhost:3001')
       .then(response => response.json())
-      .then(json => {
-        dispatch(returnEmployees(json))
-      })
+      .then(json => dispatch(returnEmployees(json)))
+      .catch((err) => dispatch(requestError(err.toString())))
   }
 }

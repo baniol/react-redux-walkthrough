@@ -14,9 +14,11 @@ export class EmployeeList extends Component {
 
   render () {
     let loader = this.props.loader ? <div>Loading ...</div> : ''
+    let errorMsg = this.props.errors ? <div>{this.props.errors}</div> : ''
     return (
       <div>
         {loader}
+        {errorMsg}
         <ul>
           {this.props.employees.map(person =>
             <li key={person.id}>
@@ -35,7 +37,8 @@ EmployeeList.propTypes = {
     name: PropTypes.string.isRequired,
     position: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  loader: PropTypes.bool
+  loader: PropTypes.bool,
+  errors: PropTypes.string
 }
 
 export const getEmployeeList = (employees, position) => {
@@ -48,7 +51,8 @@ export const getEmployeeList = (employees, position) => {
 const mapStateToProps = (state) => {
   return {
     employees: getEmployeeList(state.employees, state.positionFilter),
-    loader: state.loader
+    loader: state.loader,
+    errors: state.errors,
   }
 }
 
