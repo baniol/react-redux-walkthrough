@@ -8,7 +8,12 @@ export class EmployeeList extends Component {
     super(props)
   }
 
-  componentDidMount() {
+  // componentDidMount() {
+  //   this.props.fetchEmployees()
+  // }
+
+  // @TODO why not componentDidMount ?
+  componentWillMount() {
     this.props.fetchEmployees()
   }
 

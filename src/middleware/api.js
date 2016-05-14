@@ -1,0 +1,12 @@
+import fetch from 'isomorphic-fetch'
+
+const API = store => next => action => {
+  // console.group(action.type)
+  // console.info('dispatching', action)
+  let result = next(action)
+  // console.log('next state', store.getState())
+  // console.groupEnd(action.type)
+  return result
+}
+
+export default API

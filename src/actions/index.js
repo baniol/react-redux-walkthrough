@@ -1,4 +1,15 @@
+// import api from './middleware/api'
 import fetch from 'isomorphic-fetch'
+
+export const fetchEmployees = () => {
+  return dispatch => {
+    dispatch(makeRequest())
+    return fetch('http://localhost:3001')
+      .then(response => response.json())
+      .then(json => dispatch(returnEmployees(json)))
+      .catch((err) => dispatch(requestError(err.toString())))
+  }
+}
 
 export const setPositionFilter = (name) => {
   return {
@@ -27,15 +38,5 @@ function returnEmployees(employees) {
     type: 'FETCH_EMPLOYEES',
     employees,
     loader: false
-  }
-}
-
-export const fetchEmployees = () => {
-  return dispatch => {
-    dispatch(makeRequest())
-    return fetch('http://localhost:3001')
-      .then(response => response.json())
-      .then(json => dispatch(returnEmployees(json)))
-      .catch((err) => dispatch(requestError(err.toString())))
   }
 }
