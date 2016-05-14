@@ -2,16 +2,26 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import reducers from './reducers'
-import App from './components/App'
+import Layout from './components/Layout'
+import Employees from './components/Employees'
+import AddEmployee from './components/AddEmployee'
 import logger from './middleware/simple-logger'
 
 const store = createStore(reducers, applyMiddleware(thunk, logger))
+const history = syncHistoryWithStore(browserHistory, store)
 
 render(
   <Provider store={store}>
-    <App />
+    <Router history={history}>
+      <Route path="/" component={Layout}>
+        <IndexRoute component={ Employees }/>
+        <Route path="addemployee" component={AddEmployee}/>
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('root')
 )
