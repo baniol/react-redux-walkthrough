@@ -38,7 +38,8 @@ EmployeeList.propTypes = {
     position: PropTypes.string.isRequired
   }).isRequired).isRequired,
   loader: PropTypes.bool,
-  errors: PropTypes.string
+  errors: PropTypes.string,
+  fetchEmployees: PropTypes.func.isRequired
 }
 
 export const getEmployeeList = (employees, position) => {

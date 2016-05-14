@@ -1,15 +1,15 @@
 import expect from 'expect'
 import React from 'react'
 import { shallow } from 'enzyme'
-import App from '../../components/App'
+import Employees from '../../components/Employees'
 import EmployeeList from '../../components/EmployeeList'
 import PositionFilter from '../../components/PositionFilter'
 
 let wrapper
 
-describe('App component', () => {
+describe('Employees component', () => {
   beforeEach(() => {
-    wrapper = shallow(<App/>);
+    wrapper = shallow(<Employees/>);
   })
   it('Should render the application', () => {
     expect(wrapper.find(PositionFilter).length).toEqual(1)

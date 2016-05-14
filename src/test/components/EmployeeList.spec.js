@@ -22,7 +22,8 @@ describe('EmployeeList component', () => {
     let props = {
       employees: employeeData,
       loader: false,
-      errors: null
+      errors: null,
+      fetchEmployees: function (){}
     }
     wrapper = shallow(<EmployeeList {...props} />)
   })
