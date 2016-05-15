@@ -11,7 +11,7 @@ import Employees from './components/Employees'
 import AddEmployee from './components/AddEmployee'
 import logger from './middleware/simple-logger'
 
-const store = createStore(reducers, applyMiddleware(thunk, logger))
+const store = createStore(reducers, applyMiddleware(thunk))
 const history = syncHistoryWithStore(browserHistory, store)
 
 render(
