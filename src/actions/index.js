@@ -18,7 +18,7 @@ export const setPositionFilter = (name) => {
   }
 }
 
-export const sendEmployee = (data) => {
+export const putEmployee = (data) => {
   const fetchEmployee = fetch('http://localhost:3001/employee', {
     method: 'PUT',
     headers: {
@@ -33,6 +33,38 @@ export const sendEmployee = (data) => {
   }
 }
 
+export const postEmployee = (data, id) => {
+  const fetchEmployee = fetch(`http://localhost:3001/employee/${id}`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  return {
+    type: 'VALIDATE_EMPLOYEE', // @TODO - not used by reducers ?
+    payload: fetchEmployee // @TODO name payload ?
+  }
+}
+
+export const removeEmployee = (id) => {
+  return dispatch => {
+    // dispatch(makeRequest())
+    return fetch(`http://localhost:3001/employee/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(json => {
+      dispatch(fetchEmployees(json.data))
+    })
+  }
+}
+
 function makeRequest() {
   return {
     type: 'MAKE_REQUEST',
@@ -44,6 +76,13 @@ export const addEmployee = (employee) => {
   return {
     type: 'ADD_EMPLOYEE',
     employee
+  }
+}
+
+export const updateEmployee = (employees) => {
+  return {
+    type: 'UPDATE_EMPLOYEE',
+    employees
   }
 }
 

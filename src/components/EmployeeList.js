@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchEmployees } from '../actions'
+import { fetchEmployees, removeEmployee } from '../actions'
+import { Link } from 'react-router'
 
 export class EmployeeList extends Component {
 
@@ -22,7 +23,8 @@ export class EmployeeList extends Component {
         <ul>
           {this.props.employees.map(person =>
             <li key={person.id}>
-              {person.name} - {person.position}
+              <Link to={`employee/${person.id}`}>{person.name}</Link> - {person.position}
+              <span onClick={this.props.removeEmployee.bind(null, person.id)}>delete</span>
             </li>
           )}
         </ul>
@@ -59,7 +61,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchEmployees: () => {dispatch(fetchEmployees())}
+    fetchEmployees: () => {dispatch(fetchEmployees())},
+    removeEmployee: (id) => {dispatch(removeEmployee(id))}
   }
 }
 

@@ -20,6 +20,7 @@ render(
       <Route path="/" component={Layout}>
         <IndexRoute component={ Employees }/>
         <Route path="addemployee" component={AddEmployee}/>
+        <Route path="employee/:id" component={AddEmployee}/>
       </Route>
     </Router>
   </Provider>,

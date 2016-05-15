@@ -4,6 +4,8 @@ export default (state=[], action) => {
       return action.employees
     case 'ADD_EMPLOYEE':
       return [...state, action.employee]
+      case 'UPDATE_EMPLOYEE':
+        return action.employees
     default:
       return state
   }
