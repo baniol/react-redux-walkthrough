@@ -10,6 +10,9 @@ import Layout from './components/Layout'
 import Employees from './components/Employees'
 import AddEmployee from './components/AddEmployee'
 import logger from './middleware/simple-logger'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+
+injectTapEventPlugin()
 
 const store = createStore(reducers, applyMiddleware(thunk))
 const history = syncHistoryWithStore(browserHistory, store)

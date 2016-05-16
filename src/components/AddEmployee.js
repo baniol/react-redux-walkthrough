@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
 import { putEmployee, addEmployee, postEmployee, updateEmployee, fetchEmployees } from '../actions'
 import { browserHistory } from 'react-router'
+import RaisedButton from 'material-ui/RaisedButton'
 
 class AddEmployeeForm extends Component {
 
@@ -60,9 +61,9 @@ class AddEmployeeForm extends Component {
           </div>
         </div>
         <div>
-          <button type="submit" disabled={submitting}>
+          <RaisedButton type="submit" disabled={submitting}>
             {submitting ? <i/> : <i/>} Submit
-          </button>
+          </RaisedButton>
         </div>
       </form>
     )

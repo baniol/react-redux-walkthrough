@@ -1,7 +1,24 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import {List, ListItem} from 'material-ui/List'
+import ContentInbox from 'material-ui/svg-icons/content/inbox'
 import { fetchEmployees, removeEmployee } from '../actions'
-import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
+import Avatar from 'material-ui/Avatar'
+import FileFolder from 'material-ui/svg-icons/file/folder'
+import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import IconButton from 'material-ui/IconButton'
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+
+const iconButtonElement = (
+  <IconButton
+    touch={true}
+  >
+    <MoreVertIcon color={grey400} />
+  </IconButton>
+)
 
 export class EmployeeList extends Component {
 
@@ -13,6 +30,19 @@ export class EmployeeList extends Component {
     this.props.fetchEmployees()
   }
 
+  rightIconMenu(id) {
+    return (
+      <IconMenu iconButtonElement={iconButtonElement}>
+        <MenuItem onClick={this.editEmployee.bind(null, id)}>Edit</MenuItem>
+        <MenuItem onClick={this.props.removeEmployee.bind(null, id)}>Delete</MenuItem>
+      </IconMenu>
+    )
+  }
+
+  editEmployee(id) {
+    browserHistory.push(`employee/${id}`)
+  }
+
   render () {
     let loader = this.props.loader ? <div className="loader">Loading ...</div> : ''
     let errorMsg = this.props.errors ? <div className="error-msg">{this.props.errors}</div> : ''
@@ -20,14 +50,17 @@ export class EmployeeList extends Component {
       <div>
         {loader}
         {errorMsg}
-        <ul>
+        <List>
           {this.props.employees.map(person =>
-            <li key={person.id}>
-              <Link to={`employee/${person.id}`}>{person.name}</Link> - {person.position}
-              <span onClick={this.props.removeEmployee.bind(null, person.id)}>delete</span>
-            </li>
+            <ListItem
+              leftAvatar={<Avatar icon={<FileFolder />} />}
+              rightIconButton={this.rightIconMenu(person.id)}
+              key={person.id}
+              primaryText={person.name}
+              secondaryText={<p>{person.position}</p>}
+            />
           )}
-        </ul>
+        </List>
       </div>
     )
   }
