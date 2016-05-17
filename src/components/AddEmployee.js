@@ -3,8 +3,16 @@ import { reduxForm } from 'redux-form'
 import { putEmployee, addEmployee, postEmployee, updateEmployee, fetchEmployees } from '../actions'
 import { browserHistory } from 'react-router'
 import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
 class AddEmployeeForm extends Component {
+
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+  }
 
   componentWillMount() {
     if (this.props.params.id) {
@@ -35,30 +43,34 @@ class AddEmployeeForm extends Component {
     })
   }
 
+  handleChange(event, index, value) {
+    this.props.fields.position.autofill(value)
+  }
+
   render() {
     const { fields: { name, position }, error, resetForm, handleSubmit, submitting } = this.props
     return (
       <form onSubmit={handleSubmit(this.asyncValidate.bind(this))}>
         {error && <div>{error}</div>}
         <div>
-          <label>First Name</label>
-          <div>
-            <input type="text" placeholder="First Name" {...name}/>
-          </div>
-          {name.touched && name.error && <div>{name.error}</div>}
+          <TextField
+            hintText="First name"
+            floatingLabelText="First name"
+            errorText={name.touched && name.error && name.error}
+            {...name}
+          />
         </div>
         <div>
-          <label>Position</label>
-          <div>
-            <select {...position}>
+          <SelectField
+            floatingLabelText="Position"
+            errorText={position.touched && position.error && position.error}
+            {...position}
+            onChange={this.handleChange}
+          >
               {this.props.positions.map(pos =>
-                <option key={pos}>
-                  {pos}
-                </option>
+                <MenuItem key={pos} value={pos} primaryText={pos} />
               )}
-            </select>
-            {position.touched && position.error && <div>{position.error}</div>}
-          </div>
+          </SelectField>
         </div>
         <div>
           <RaisedButton type="submit" disabled={submitting}>

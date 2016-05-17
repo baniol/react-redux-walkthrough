@@ -6,7 +6,8 @@ import Menu from './Menu'
 const styles = {
   container: {
     textAlign: 'left',
-    padding: 100,
+    width: 500,
+    padding: 50
   },
 }
 
