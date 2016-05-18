@@ -1,9 +1,7 @@
+import { browserHistory } from 'react-router'
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
 import {List, ListItem} from 'material-ui/List'
 import ContentInbox from 'material-ui/svg-icons/content/inbox'
-import { fetchEmployees, removeEmployee } from '../actions'
-import { browserHistory } from 'react-router'
 import Avatar from 'material-ui/Avatar'
 import FileFolder from 'material-ui/svg-icons/file/folder'
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
@@ -20,8 +18,9 @@ const iconButtonElement = (
   </IconButton>
 )
 
-export class EmployeeList extends Component {
+class EmployeeList extends Component {
 
+  // @TODO necessary ?
   constructor(props) {
     super(props)
   }
@@ -39,6 +38,7 @@ export class EmployeeList extends Component {
     )
   }
 
+  // @TODO - to component ?
   editEmployee(id) {
     browserHistory.push(`employee/${id}`)
   }
@@ -77,26 +77,4 @@ EmployeeList.propTypes = {
   fetchEmployees: PropTypes.func.isRequired
 }
 
-export const getEmployeeList = (employees, position) => {
-  if (position) {
-    return employees.filter(p => p.position === position)
-  }
-  return employees
-}
-
-const mapStateToProps = (state) => {
-  return {
-    employees: getEmployeeList(state.employees, state.positionFilter),
-    loader: state.loader,
-    errors: state.errors,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchEmployees: () => {dispatch(fetchEmployees())},
-    removeEmployee: (id) => {dispatch(removeEmployee(id))}
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(EmployeeList)
+export default EmployeeList

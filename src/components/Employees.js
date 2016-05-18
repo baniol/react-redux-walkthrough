@@ -1,6 +1,6 @@
 import React from 'react'
-import EmployeeList from './EmployeeList'
-import PositionFilter from './PositionFilter'
+import EmployeeList from '../containers/EmployeeListContainer'
+import PositionFilter from '../containers/PositionFilterContainer'
 
 const App = () => (
   <div>
