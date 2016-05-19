@@ -18,24 +18,11 @@ export const setPositionFilter = (name) => {
   }
 }
 
-export const putEmployee = (data) => {
-  const fetchEmployee = fetch('http://localhost:3001/employee', {
-    method: 'PUT',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  return {
-    type: 'VALIDATE_EMPLOYEE', // @TODO - not used by reducers ?
-    payload: fetchEmployee // @TODO name payload ?
-  }
-}
-
-export const postEmployee = (data, id) => {
-  const fetchEmployee = fetch(`http://localhost:3001/employee/${id}`, {
-    method: 'POST',
+export const saveEmployee = (data, id) => {
+  const url = id ? `http://localhost:3001/employee/${id}` : `http://localhost:3001/employee`
+  const method = id ? 'POST' : 'PUT'
+  const fetchEmployee = fetch(url, {
+    method: method,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'

@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 import reducers from './reducers'
 import Layout from './components/Layout'
 import Employees from './components/Employees'
-import AddEmployee from './components/AddEmployee'
+import EmployeeEditContainer from './containers/EmployeeEditContainer'
 import logger from './middleware/simple-logger'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
@@ -22,8 +22,8 @@ render(
     <Router history={history}>
       <Route path="/" component={Layout}>
         <IndexRoute component={ Employees }/>
-        <Route path="addemployee" component={AddEmployee}/>
-        <Route path="employee/:id" component={AddEmployee}/>
+        <Route path="addemployee" component={EmployeeEditContainer}/>
+        <Route path="employee/:id" component={EmployeeEditContainer}/>
       </Route>
     </Router>
   </Provider>,
