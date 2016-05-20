@@ -1,6 +1,5 @@
-import expect from 'expect'
+import expect, { createSpy } from 'expect'
 import React from 'react'
-import sinon from 'sinon'
 import { shallow } from 'enzyme'
 import { PositionFilter } from '../../components/PositionFilter'
 
@@ -19,10 +18,10 @@ describe('PositionFilter component', () => {
     expect(wrapper.find('span').length).toEqual(4)
   });
   it('Should trigger an event on span click', () => {
-    let onFilterClick = sinon.spy()
+    let onFilterClick = expect.createSpy()
     wrapper.setProps({filterPositions: onFilterClick})
     wrapper.find('span').first().simulate('click');
-    expect(onFilterClick.calledOnce).toEqual(true);
+    expect(onFilterClick).toHaveBeenCalled();
   });
   it('Should have filter item not highlighted', () => {
     expect(wrapper.find('span').first().props().style).toExclude({backgroundColor: 'silver'})
