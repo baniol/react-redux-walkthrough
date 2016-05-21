@@ -12,4 +12,5 @@ Each of the enlisted posts is illustrated by a separate branch.
 
 Check the posts for the detailed description:
 
-* [01-introduction](https://gist.github.com/baniol/de64830114db9fa700ba9eaeb149cb26) - introduction into the Redux architecture, main building blocks and the data flow. [Branch 01-introduction](https://github.com/baniol/react-redux-walkthrough/tree/01-introduction)
+* [01-introduction](https://gist.github.com/baniol/de64830114db9fa700ba9eaeb149cb26) - introduction into the Redux architecture, main building blocks and the data flow. [The code 01-introduction](https://github.com/baniol/react-redux-walkthrough/tree/01-introduction).
+* [02-unit-testing](https://gist.github.com/baniol/9ced449620478096d11521442bbd8b54) - unit testing React/Redux applications. [The code for 02-unit-testing](https://github.com/baniol/react-redux-walkthrough/tree/02-unit-tests).
