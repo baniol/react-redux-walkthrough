@@ -16,7 +16,7 @@ function makeRequest() {
 
 function returnEmployees(employees) {
   return {
-    type: 'FETCH_EMPLOYEES',
+    type: 'EMPLOYEES_LOADED',
     employees,
     loader: false
   }
