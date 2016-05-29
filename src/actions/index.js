@@ -24,7 +24,7 @@ function requestError(error) {
 
 function returnEmployees(employees) {
   return {
-    type: 'FETCH_EMPLOYEES',
+    type: 'EMPLOYEES_LOADED',
     employees,
     loader: false
   }
@@ -33,7 +33,7 @@ function returnEmployees(employees) {
 export const fetchEmployees = () => {
   return dispatch => {
     dispatch(makeRequest())
-    return fetch('http://localhost:3001')
+    return fetch('http://localhost:3001/employees')
       .then(response => response.json())
       .then(json => dispatch(returnEmployees(json)))
       .catch((err) => dispatch(requestError(err.toString())))
