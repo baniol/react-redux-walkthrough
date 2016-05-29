@@ -1,7 +1,7 @@
 const loader = (state = false, action) => {
   switch(action.type) {
     case 'MAKE_REQUEST':
-    case 'FETCH_EMPLOYEES':
+    case 'EMPLOYEES_LOADED':
     case 'REQUEST_ERROR':
     return action.loader
     default:
