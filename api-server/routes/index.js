@@ -40,9 +40,9 @@ router.put('/employee', function(req, res, next) {
     return;
   }
   var newEmployee = {
-		"id": getLastId(),
-		"name": req.body.name,
-		"position": req.body.position
+		'id': getLastId(),
+		'name': req.body.name,
+		'position': req.body.position
 	};
   employeeData.push(newEmployee);
   setTimeout(function () {

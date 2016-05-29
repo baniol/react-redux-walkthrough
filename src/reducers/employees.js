@@ -1,6 +1,6 @@
 export default (state=[], action) => {
   switch(action.type) {
-    case 'FETCH_EMPLOYEES':
+    case 'EMPLOYEES_LOADED':
       return action.employees
     case 'ADD_EMPLOYEE':
       return [...state, action.employee]

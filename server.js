@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
 
-// require('./api-server/api-server');
 require('./api-server/bin/www');
 
 new WebpackDevServer(webpack(config), {

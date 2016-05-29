@@ -27,14 +27,14 @@ describe('Actions', () => {
   })
 
   describe('fetchEmployees', () => {
-    it('creates FETCH_EMPLOYEES when fetching employees has been done', () => {
+    it('creates EMPLOYEES_LOADED when fetching employees has been done', () => {
       nock('http://localhost:3001')
-        .get('/')
+        .get('/employees')
         .reply(200, employeeResult)
 
       const expectedActions = [
         { type: 'MAKE_REQUEST', loader: true },
-        { type: 'FETCH_EMPLOYEES', loader: false, employees: employeeResult }
+        { type: 'EMPLOYEES_LOADED', loader: false, employees: employeeResult }
       ]
       const store = mockStore({ employees: [] })
 
