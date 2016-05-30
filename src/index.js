@@ -5,16 +5,16 @@ import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import thunk from 'redux-thunk'
+import createLogger from 'redux-logger'
 import reducers from './reducers'
 import Layout from './components/Layout'
 import Employees from './components/Employees'
 import EmployeeEditContainer from './containers/EmployeeEditContainer'
-import logger from './middleware/simple-logger'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 injectTapEventPlugin()
-
-const store = createStore(reducers, applyMiddleware(thunk))
+const logger = createLogger()
+const store = createStore(reducers, applyMiddleware(thunk, logger))
 const history = syncHistoryWithStore(browserHistory, store)
 
 render(
