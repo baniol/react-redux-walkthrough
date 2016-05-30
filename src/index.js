@@ -5,12 +5,13 @@ import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import thunk from 'redux-thunk'
+import createLogger from 'redux-logger'
 import reducers from './reducers'
 import Layout from './components/Layout'
 import Employees from './components/Employees'
 import AddEmployee from './components/AddEmployee'
-import logger from './middleware/simple-logger'
 
+const logger = createLogger()
 const store = createStore(reducers, applyMiddleware(thunk, logger))
 const history = syncHistoryWithStore(browserHistory, store)
 
