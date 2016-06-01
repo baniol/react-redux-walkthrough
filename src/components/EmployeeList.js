@@ -4,11 +4,12 @@ import { fetchEmployees } from '../actions'
 
 export class EmployeeList extends Component {
 
+  // @TODO props as params, constructor at all?
   constructor(props) {
     super(props)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchEmployees()
   }
 
@@ -59,7 +60,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchEmployees: () => {dispatch(fetchEmployees())}
+    fetchEmployees: () => dispatch(fetchEmployees())
   }
 }
 

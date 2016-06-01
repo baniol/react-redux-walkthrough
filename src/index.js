@@ -19,7 +19,7 @@ render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={Layout}>
-        <IndexRoute component={ Employees }/>
+        <IndexRoute component={Employees}/>
         <Route path="addemployee" component={AddEmployee}/>
       </Route>
     </Router>
