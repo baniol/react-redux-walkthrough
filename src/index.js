@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import reducers from './reducers'
 import Layout from './components/Layout'
-import Employees from './components/Employees'
+import Employees from './containers/Employees'
 import AddEmployee from './components/AddEmployee'
 
 const logger = createLogger()

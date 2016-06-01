@@ -1,7 +1,7 @@
 import expect from 'expect'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { EmployeeList, getEmployeeList } from '../../components/EmployeeList'
+import { EmployeeList, getEmployeeList } from '../../containers/EmployeeList'
 
 let wrapper
 let employeeData = [

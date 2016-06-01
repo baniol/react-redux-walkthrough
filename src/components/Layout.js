@@ -1,7 +1,7 @@
 import React from 'react'
 import Menu from './Menu'
 
-export default (props) => {
+const Layout = (props) => {
   return (
     <div>
       <Menu />
@@ -11,3 +11,9 @@ export default (props) => {
     </div>
   )
 }
+
+// Layout.propTypes = {
+//   children ...
+// }
+
+export default Layout

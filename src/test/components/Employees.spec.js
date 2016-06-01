@@ -2,7 +2,7 @@ import expect from 'expect'
 import React from 'react'
 import { shallow } from 'enzyme'
 import Employees from '../../components/Employees'
-import EmployeeList from '../../components/EmployeeList'
+import EmployeeList from '../../containers/EmployeeList'
 import PositionFilter from '../../components/PositionFilter'
 
 let wrapper

@@ -1,10 +1,9 @@
-// import api from './middleware/api'
 import fetch from 'isomorphic-fetch'
 
 export const fetchEmployees = () => {
   return dispatch => {
     dispatch(makeRequest())
-    return fetch('http://localhost:3001')
+    return fetch('http://localhost:3001/eee')
       .then(response => response.json())
       .then(json => dispatch(returnEmployees(json)))
       .catch((err) => dispatch(requestError(err.toString())))
@@ -25,18 +24,19 @@ function makeRequest() {
   }
 }
 
-function requestError(error) {
+function returnEmployees(employees) {
   return {
-    type: 'REQUEST_ERROR',
-    error,
+    // @TODO change name, like in previous branches
+    type: 'FETCH_EMPLOYEES',
+    employees,
     loader: false
   }
 }
 
-function returnEmployees(employees) {
+function requestError(error) {
   return {
-    type: 'FETCH_EMPLOYEES',
-    employees,
+    type: 'REQUEST_ERROR',
+    error,
     loader: false
   }
 }
