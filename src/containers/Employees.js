@@ -24,18 +24,6 @@ export class Employees extends Component {
   }
 }
 
-// @TODO doubled employees in EmployeeList ?
-Employees.propTypes = {
-  employees: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    position: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  loader: PropTypes.bool.isRequired,
-  errors: PropTypes.string,
-  fetchEmployees: PropTypes.func.isRequired
-}
-
 export const getEmployeeList = (employees, position) => {
   if (position) {
     return employees.filter(p => p.position === position)

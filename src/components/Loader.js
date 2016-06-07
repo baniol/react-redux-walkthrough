@@ -9,9 +9,8 @@ const Loader = (props) => {
   )
 }
 
-// @TODO PropTypes not working for funtional components?
-// Loader.PropTypes = {
-//   loader: PropTypes.bool.isRequired
-// }
+Loader.PropTypes = {
+  loader: PropTypes.bool.isRequired
+}
 
 export default Loader

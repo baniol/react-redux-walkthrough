@@ -11,6 +11,8 @@ const employeeResult = [{
   position: 'Web Developer'
 }]
 
+// @TODO actions to a separate files - combine?
+
 describe('Actions', () => {
 
   afterEach(() => {
@@ -28,6 +30,7 @@ describe('Actions', () => {
 
   describe('fetchEmployees', () => {
     it('creates FETCH_EMPLOYEES when fetching employees has been done', () => {
+      // @TODO to config
       nock('http://localhost:3001')
         .get('/')
         .reply(200, employeeResult)

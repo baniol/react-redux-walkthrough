@@ -3,7 +3,8 @@ import fetch from 'isomorphic-fetch'
 export const fetchEmployees = () => {
   return dispatch => {
     dispatch(makeRequest())
-    return fetch('http://localhost:3001/eee')
+    // @TODO to config + route employees
+    return fetch('http://localhost:3001')
       .then(response => response.json())
       .then(json => dispatch(returnEmployees(json)))
       .catch((err) => dispatch(requestError(err.toString())))

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 const Error = (props) => {
-  let errorMsg = props.error ? <div className="error-msg">{this.props.error}</div> : ''
+  let errorMsg = props.error ? <div className="error-msg">{props.error}</div> : ''
   return (
     <div>
       {errorMsg}
@@ -9,9 +9,8 @@ const Error = (props) => {
   )
 }
 
-// @TODO PropTypes not working for funtional components?
-// Error.PropTypes = {
-//   loader: PropTypes.bool.isRequired
-// }
+Error.PropTypes = {
+  error: PropTypes.string
+}
 
 export default Error

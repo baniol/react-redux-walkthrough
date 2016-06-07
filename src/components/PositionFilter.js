@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'; // @TODO PropTypes ?
 
 // @TODO different way - classnames, module's css ?
 let spanStyle = (pos, currentFilter) => {
@@ -12,16 +12,24 @@ let spanStyle = (pos, currentFilter) => {
   return style
 }
 
-export default (props) => (
-  <div>
+const PositionFilter = (props) => (
+  <ul>
     {props.positions.map(position =>
-      <span
+      <li
         key={position}
         style={spanStyle(position, props.currentFilter)}
         onClick={props.setPositionFilter.bind(null, position)}
         >
         {position}
-      </span>
+      </li>
     )}
-  </div>
+  </ul>
 )
+
+PositionFilter.PropTypes = {
+  positions: PropTypes.array.isRequired,
+  currentFilter: PropTypes.string.isRequired,
+  setPositionFilter: PropTypes.func.isRequired
+}
+
+export default PositionFilter
