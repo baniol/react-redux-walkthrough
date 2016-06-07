@@ -32,7 +32,7 @@ describe('Actions', () => {
     it('creates FETCH_EMPLOYEES when fetching employees has been done', () => {
       // @TODO to config
       nock('http://localhost:3001')
-        .get('/')
+        .get('/employees')
         .reply(200, employeeResult)
 
       const expectedActions = [

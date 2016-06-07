@@ -4,7 +4,7 @@ export const fetchEmployees = () => {
   return dispatch => {
     dispatch(makeRequest())
     // @TODO to config + route employees
-    return fetch('http://localhost:3001')
+    return fetch('http://localhost:3001/employees')
       .then(response => response.json())
       .then(json => dispatch(returnEmployees(json)))
       .catch((err) => dispatch(requestError(err.toString())))
