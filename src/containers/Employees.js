@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchEmployees, setPositionFilter } from '../actions'
+import { fetchEmployees, fetchPositions, setPositionFilter } from '../actions'
 import EmployeeList from '../components/EmployeeList'
 import PositionFilter from '../components/PositionFilter'
 import Loader from '../components/Loader'
@@ -9,6 +9,7 @@ import Error from '../components/Error'
 export class Employees extends Component {
 
   componentDidMount() {
+    this.props.fetchPositions()
     this.props.fetchEmployees()
   }
 
@@ -43,6 +44,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchEmployees: () => dispatch(fetchEmployees()),
+    fetchPositions: () => dispatch(fetchPositions()),
     setPositionFilter: (name) => dispatch(setPositionFilter(name))
   }
 }

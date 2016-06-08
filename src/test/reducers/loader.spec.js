@@ -5,72 +5,37 @@ describe('loader reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(false)
+    ).toEqual(0)
   })
 
-  describe('MAKE_REQUEST', () => {
-    it('set loader to true for MAKE_REQUEST', () => {
+  describe('Increment/decrement state', () => {
+    it('should increment the loader state', () => {
       expect(
-        reducer(null, {
-          type: 'MAKE_REQUEST',
-          loader: true
+        reducer(0, {
+          loader: 'show'
         })
-      ).toEqual(true)
+      ).toEqual(1)
     })
-  })
-
-  describe('MAKE_REQUEST', () => {
-    it('set loader to false from true for MAKE_REQUEST', () => {
+    it('should increment the loader state', () => {
       expect(
-        reducer(true, {
-          type: 'MAKE_REQUEST',
-          loader: false
+        reducer(1, {
+          loader: 'show'
         })
-      ).toEqual(false)
+      ).toEqual(2)
     })
-  })
-
-  describe('FETCH_EMPLOYEES', () => {
-    it('set loader to true for FETCH_EMPLOYEES', () => {
+    it('should decrement the loader state', () => {
       expect(
-        reducer(null, {
-          type: 'FETCH_EMPLOYEES',
-          loader: true
+        reducer(2, {
+          loader: 'hide'
         })
-      ).toEqual(true)
+      ).toEqual(1)
     })
-  })
-
-  describe('FETCH_EMPLOYEES', () => {
-    it('set loader to false from true for FETCH_EMPLOYEES', () => {
+    it('should set state to 0 if prev state < 0', () => {
       expect(
-        reducer(true, {
-          type: 'FETCH_EMPLOYEES',
-          loader: false
+        reducer(-1, {
+          loader: 'hide'
         })
-      ).toEqual(false)
-    })
-  })
-
-  describe('REQUEST_ERROR', () => {
-    it('set loader to true for REQUEST_ERROR', () => {
-      expect(
-        reducer(null, {
-          type: 'REQUEST_ERROR',
-          loader: true
-        })
-      ).toEqual(true)
-    })
-  })
-
-  describe('REQUEST_ERROR', () => {
-    it('set loader to false from true for REQUEST_ERROR', () => {
-      expect(
-        reducer(true, {
-          type: 'REQUEST_ERROR',
-          loader: false
-        })
-      ).toEqual(false)
+      ).toEqual(0)
     })
   })
 
