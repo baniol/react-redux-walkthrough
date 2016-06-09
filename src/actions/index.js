@@ -1,13 +1,14 @@
-import fetch from 'isomorphic-fetch'
+import fetchPlus from '../lib/fetchPlus'
 
 export const fetchEmployees = () => {
   return dispatch => {
     dispatch(makeRequest())
     // @TODO to config
-    return fetch('http://localhost:3001/employees')
-      .then(response => response.json())
-      .then(json => dispatch(returnEmployees(json)))
-      .catch((err) => dispatch(requestError(err.toString())))
+    return fetchPlus('http://localhost:3001/employees')
+    .then(json => dispatch(returnEmployees(json)))
+    .catch(err => {
+      dispatch(requestError(err.toString()))
+    })
   }
 }
 
@@ -15,10 +16,11 @@ export const fetchPositions = () => {
   return dispatch => {
     dispatch(makeRequest())
     // @TODO to config
-    return fetch('http://localhost:3001/positions')
-      .then(response => response.json())
+    return fetchPlus('http://localhost:3001/positions')
       .then(json => dispatch(returnPositions(json)))
-      .catch((err) => dispatch(requestError(err.toString())))
+      .catch(err => {
+        dispatch(requestError(err.toString()))
+      })
   }
 }
 

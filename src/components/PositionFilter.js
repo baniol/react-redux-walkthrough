@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'; // @TODO PropTypes ?
+import React, { PropTypes } from 'react';
 
 // @TODO different way - classnames, module's css ?
 let spanStyle = (pos, currentFilter) => {

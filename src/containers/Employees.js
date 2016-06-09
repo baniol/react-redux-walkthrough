@@ -17,7 +17,7 @@ export class Employees extends Component {
     return (
       <div>
         <PositionFilter {...this.props} />
-        <Error error={this.props.error} />
+        <Error error={this.props.errors} />
         <Loader loader={this.props.loader} />
         <EmployeeList {...this.props} />
       </div>
@@ -37,6 +37,7 @@ const mapStateToProps = (state) => {
     employees: getEmployeeList(state.employees, state.positionFilter),
     positions: state.positions,
     currentFilter: state.positionFilter,
+    errors: state.errors,
     loader: state.loader
   }
 }

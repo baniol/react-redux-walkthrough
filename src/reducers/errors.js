@@ -1,7 +1,8 @@
-const errors = (state = null, action) => {
+const errors = (state = [], action) => {
   const { type, error } = action
   if (type === 'REQUEST_ERROR') {
-    return error
+    state.push(error)
+    return state
   }
   return state
 }

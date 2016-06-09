@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react'
 
 const Error = (props) => {
-  let errorMsg = props.error ? <div className="error-msg">{props.error}</div> : ''
+  let errorMsg = ''
+  if (props.error.length > 0) {
+    errorMsg = <ul> {props.error.map((e, i) => <li key={i}>{e}</li>)} </ul>
+  }
   return (
     <div>
       {errorMsg}
