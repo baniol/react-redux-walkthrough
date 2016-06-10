@@ -9,6 +9,12 @@ import Error from '../components/Error'
 export class Employees extends Component {
 
   componentDidMount() {
+    if (this.props.employees.length === 0) {
+      this.fetchData()
+    }
+  }
+
+  fetchData() {
     this.props.fetchPositions()
     this.props.fetchEmployees()
   }
