@@ -1,23 +1,15 @@
 import React, { PropTypes } from 'react';
+import styles from '../styles/PositionFilter.css'
+import classNames from 'classnames/bind'
 
-// @TODO different way - classnames, module's css ?
-let spanStyle = (pos, currentFilter) => {
-  let style = {
-    cursor: 'pointer',
-    padding: '3px 5px'
-  }
-  if (pos === currentFilter) {
-    style.backgroundColor = 'silver'
-  }
-  return style
-}
+const cx = classNames.bind(styles);
 
 const PositionFilter = (props) => (
-  <ul>
+  <ul className={styles.filter}>
     {props.positions.map(position =>
       <li
         key={position}
-        style={spanStyle(position, props.currentFilter)}
+        className={cx({active: props.currentFilter === position})}
         onClick={props.setPositionFilter.bind(null, position)}
         >
         {position}

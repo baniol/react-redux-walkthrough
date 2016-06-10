@@ -1,0 +1,9 @@
+.container {
+  border-width: 1px;
+  border-style: solid;
+  border-color: grey;
+  margin: auto;
+  max-width: 600px;
+  position: relative;
+  min-height: 400px;
+}

@@ -1,20 +1,21 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import Menu from './Menu'
+
+import styles from '../styles/Container.css'
 
 const Layout = (props) => {
   return (
-    <div>
+    <div className={styles.container}>
       <Menu />
-      <div className="container">
+      <div>
         { props.children }
       </div>
     </div>
   )
 }
 
-// @TODO
-// Layout.propTypes = {
-//   children ...
-// }
+Layout.PropTypes = {
+  children: PropTypes.node
+}
 
 export default Layout

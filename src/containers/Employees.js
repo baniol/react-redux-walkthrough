@@ -1,10 +1,14 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchEmployees, fetchPositions, setPositionFilter } from '../actions'
 import EmployeeList from '../components/EmployeeList'
 import PositionFilter from '../components/PositionFilter'
 import Loader from '../components/Loader'
 import Error from '../components/Error'
+
+const style = (loader) => {
+  return loader ? {opacity: 0.3} : {}
+}
 
 export class Employees extends Component {
 
@@ -21,7 +25,7 @@ export class Employees extends Component {
 
   render() {
     return (
-      <div>
+      <div style={style(this.props.loader)}>
         <PositionFilter {...this.props} />
         <Error error={this.props.errors} />
         <Loader loader={this.props.loader} />
