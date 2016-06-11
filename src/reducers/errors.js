@@ -1,10 +1,16 @@
+import { REQUEST_ERROR, CLOSE_ERRORS } from '../constants/ActionTypes'
+
 const errors = (state = [], action) => {
   const { type, error } = action
-  if (type === 'REQUEST_ERROR') {
-    state.push(error)
-    return state
+  switch(type) {
+    case REQUEST_ERROR:
+      state.push(error)
+      return state
+    case CLOSE_ERRORS:
+      return []
+    default:
+      return state
   }
-  return state
 }
 
 export default errors

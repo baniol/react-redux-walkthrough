@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchEmployees, fetchPositions, setPositionFilter } from '../actions'
+import { fetchEmployees, fetchPositions, setPositionFilter, closeErrors } from '../actions'
 import EmployeeList from '../components/EmployeeList'
 import PositionFilter from '../components/PositionFilter'
 import Loader from '../components/Loader'
 import Error from '../components/Error'
-
-const style = (loader) => {
-  return loader ? {opacity: 0.3} : {}
-}
 
 export class Employees extends Component {
 
@@ -25,9 +21,9 @@ export class Employees extends Component {
 
   render() {
     return (
-      <div style={style(this.props.loader)}>
+      <div style={{opacity: this.props.loader ? 0.2 : 1}}>
         <PositionFilter {...this.props} />
-        <Error error={this.props.errors} />
+        <Error {...this.props} />
         <Loader loader={this.props.loader} />
         <EmployeeList {...this.props} />
       </div>
@@ -56,7 +52,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchEmployees: () => dispatch(fetchEmployees()),
     fetchPositions: () => dispatch(fetchPositions()),
-    setPositionFilter: (name) => dispatch(setPositionFilter(name))
+    setPositionFilter: (name) => dispatch(setPositionFilter(name)),
+    closeErrors: () => dispatch(closeErrors())
   }
 }
 

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
-    "test": "mocha './src/test/**/*.spec.js' --compilers js:babel-register",
+    "test": "mocha './src/test/**/*.spec.js' --require ./src/test/setup.js --compilers js:babel-register",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
@@ -29,6 +29,7 @@
     "babel-preset-stage-0": "^6.0.15",
     "babel-register": "^6.8.0",
     "css-loader": "^0.23.1",
+    "css-modules-require-hook": "^4.0.1",
     "enzyme": "^2.2.0",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.6.2",

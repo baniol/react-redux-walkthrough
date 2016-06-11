@@ -1,4 +1,5 @@
-import fetchPlus from '../lib/fetchPlus'
+import fetchPlus from '../lib/fetchPlus' // @TODO change name
+import * as types from '../constants/ActionTypes'
 
 export const fetchEmployees = () => {
   return dispatch => {
@@ -26,14 +27,20 @@ export const fetchPositions = () => {
 
 export const setPositionFilter = (name) => {
   return {
-    type: 'SET_POSITION_FILTER',
+    type: types.SET_POSITION_FILTER,
     name
+  }
+}
+
+export const closeErrors = () => {
+  return {
+    type: types.CLOSE_ERRORS
   }
 }
 
 function makeRequest() {
   return {
-    type: 'MAKE_REQUEST',
+    type: types.MAKE_REQUEST,
     loader: 'show'
   }
 }
@@ -41,7 +48,7 @@ function makeRequest() {
 function returnEmployees(employees) {
   return {
     // @TODO change name, like in previous branches
-    type: 'FETCH_EMPLOYEES',
+    type: types.FETCH_EMPLOYEES,
     employees,
     loader: 'hide'
   }
@@ -49,7 +56,7 @@ function returnEmployees(employees) {
 
 function returnPositions(positions) {
   return {
-    type: 'FETCH_POSITIONS',
+    type: types.FETCH_POSITIONS,
     positions,
     loader: 'hide'
   }
@@ -57,7 +64,7 @@ function returnPositions(positions) {
 
 function requestError(error) {
   return {
-    type: 'REQUEST_ERROR',
+    type: types.REQUEST_ERROR,
     error,
     loader: 'hide'
   }

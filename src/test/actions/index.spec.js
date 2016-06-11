@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import * as actions from '../../actions'
 import nock from 'nock'
 import expect from 'expect'
+import * as types from '../../constants/ActionTypes'
 
 const mockStore = configureMockStore([thunk])
 const employeeResult = [{
@@ -22,8 +23,16 @@ describe('Actions', () => {
   describe('setPositionFilter', () => {
     it('should create SET_POSITION_FILTER action', () => {
       expect(actions.setPositionFilter('Developer')).toEqual({
-        type: 'SET_POSITION_FILTER',
+        type: types.SET_POSITION_FILTER,
         name: 'Developer'
+      })
+    })
+  })
+
+  describe('closeErrors', () => {
+    it('should emit CLOSE_ERRORS type', () => {
+      expect(actions.closeErrors()).toEqual({
+        type: types.CLOSE_ERRORS
       })
     })
   })
@@ -36,8 +45,8 @@ describe('Actions', () => {
         .reply(200, employeeResult)
 
       const expectedActions = [
-        { type: 'MAKE_REQUEST', loader: 'show' },
-        { type: 'FETCH_EMPLOYEES', loader: 'hide', employees: employeeResult }
+        { type: types.MAKE_REQUEST, loader: 'show' },
+        { type: types.FETCH_EMPLOYEES, loader: 'hide', employees: employeeResult }
       ]
       const store = mockStore({ employees: [] })
 
@@ -57,8 +66,8 @@ describe('Actions', () => {
         .reply(200, positionsData)
 
       const expectedActions = [
-        { type: 'MAKE_REQUEST', loader: 'show' },
-        { type: 'FETCH_POSITIONS', loader: 'hide', positions: positionsData }
+        { type: types.MAKE_REQUEST, loader: 'show' },
+        { type: types.FETCH_POSITIONS, loader: 'hide', positions: positionsData }
       ]
       const store = mockStore({ employees: [] })
 
