@@ -10,8 +10,6 @@ import employeeData from '../fixtures/employeesMocked'
 
 let wrapper
 
-// @TODO test componentDidMount - mount instead of shallow?
-
 describe('Employees container', () => {
   beforeEach(() => {
     let props = {

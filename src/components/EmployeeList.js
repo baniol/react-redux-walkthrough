@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
+import classNames from 'classnames/bind'
 import styles from '../styles/EmployeeList.css'
 import DeleteIcon from 'react-icons/lib/md/delete'
 import EditIcon from 'react-icons/lib/md/mode-edit'
-import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
 const EmployeeList = (props) => {
   return (
-    <div className={styles.employees}>
-      <ul>
+    <div>
+      <ul className={styles.list}>
       {props.employees.map(person =>
         <li key={person.id}>
           <div className={cx('info')}>

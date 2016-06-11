@@ -3,6 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import EmployeeList from '../../components/EmployeeList'
 import employeeData from '../fixtures/employeesMocked'
+import styles from '../../styles/EmployeeList.css'
 
 let wrapper
 
@@ -14,15 +15,24 @@ describe('EmployeeList component', () => {
     wrapper = shallow(<EmployeeList {...props} />)
   })
 
+  it('Should render employee data in the first li as text', () => {
+    console.log(wrapper.find(`.${styles.personName}`).first().text())
+  })
+
   it('Should render the ul and li elements', () => {
     expect(wrapper.find('ul').length).toEqual(1)
     expect(wrapper.find('li').length).toEqual(2)
   })
-  it('Should render employee data in the first li as text', () => {
-    expect(wrapper.find('li').first().text()).toEqual('Reese Hardin - Web Developer')
+  it('Should render employee name in the first li as text', () => {
+    expect(wrapper.find(`.${styles.personName}`).first().text()).toEqual('Reese Hardin')
   })
-  it('Should render employee data in the second li as text', () => {
-    expect(wrapper.find('li').at(1).text()).toEqual('Cora Ashley - Java Developer')
+  it('Should render employee name in the second li as text', () => {
+    expect(wrapper.find(`.${styles.personName}`).at(1).text()).toEqual('Cora Ashley')
   })
-
+  it('Should render employee position in the first li as text', () => {
+    expect(wrapper.find(`.${styles.personPosition}`).first().text()).toEqual('Web Developer')
+  })
+  it('Should render employee position in the second li as text', () => {
+    expect(wrapper.find(`.${styles.personPosition}`).at(1).text()).toEqual('Java Developer')
+  })
 })

@@ -5,14 +5,12 @@ import styles from '../styles/Loader.css'
 const cx = classNames.bind(styles)
 
 const Loader = (props) => {
-  // let loader = props.loader ? <div className={cx('loader')}><Spinner /></div> : ''
   let loader = ''
-  console.log(props.loader);
   if (props.loader) {
-    loader = <div className={cx('loader-wrapper')}><div className={cx('loader')}>Loading ...</div></div>
+    loader = <div className={cx('loader')}>Loading ...</div>
   }
   return (
-    <div>
+    <div className={cx('loaderWrapper')} style={{display: props.loader ? 'block' : 'none'}}>
       {loader}
     </div>
   )

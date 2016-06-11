@@ -7,8 +7,8 @@ export default (props) => {
   return (
     <div className={styles.nav}>
       <ul>
-        <li><Link to='/'>Employee List</Link></li>
-        <li><Link to='addemployee'>Add Employee</Link></li>
+        <li className={props.location.pathname === '/' ? styles.active : ''}><Link to='/'>Employee List</Link></li>
+        <li className={props.location.pathname === '/addemployee' ? styles.active : ''}><Link to='/addemployee'>Add Employee</Link></li>
       </ul>
     </div>
   )
