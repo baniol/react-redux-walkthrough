@@ -1,5 +1,6 @@
 import expect from 'expect'
 import reducer from '../../reducers/positionFilter'
+import * as types from '../../constants/ActionTypes'
 
 describe('positionFilter reducer', () => {
   it('should return the initial state', () => {
@@ -11,7 +12,7 @@ describe('positionFilter reducer', () => {
     it('return the action.name if the state is null', () => {
       expect(
         reducer(null, {
-          type: 'SET_POSITION_FILTER',
+          type: types.SET_POSITION_FILTER,
           name: 'Dev'
         })
       ).toEqual('Dev')
@@ -19,7 +20,7 @@ describe('positionFilter reducer', () => {
     it('should return null if the action.name is the same as the state', () => {
       expect(
         reducer('Dev', {
-          type: 'SET_POSITION_FILTER',
+          type: types.SET_POSITION_FILTER,
           name: 'Dev'
         })
       ).toEqual(null)
@@ -27,7 +28,7 @@ describe('positionFilter reducer', () => {
     it('should return the action.name if it is different from the state ', () => {
       expect(
         reducer('Dev', {
-          type: 'SET_POSITION_FILTER',
+          type: types.SET_POSITION_FILTER,
           name: 'QA'
         })
       ).toEqual('QA')

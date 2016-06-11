@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'
 import styles from '../styles/PositionFilter.css'
 import classNames from 'classnames/bind'
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind(styles)
 
 const PositionFilter = (props) => (
   <ul className={styles.filter}>

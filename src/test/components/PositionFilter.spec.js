@@ -3,6 +3,7 @@ import React from 'react'
 import sinon from 'sinon'
 import { shallow } from 'enzyme'
 import PositionFilter from '../../components/PositionFilter'
+import styles from '../../styles/PositionFilter.css'
 
 let wrapper
 
@@ -25,10 +26,10 @@ describe('PositionFilter component', () => {
     expect(onFilterClick.calledOnce).toEqual(true);
   });
   it('Should have filter item not highlighted', () => {
-    expect(wrapper.find('li').first().props().style).toExclude({backgroundColor: 'silver'})
+    expect(wrapper.find('li').first().hasClass(styles.active)).toEqual(false)
   });
   it('Should highlight the current filter', () => {
     wrapper.setProps({currentFilter: 'Software Architect'})
-    expect(wrapper.find('li').first().props().style).toInclude({backgroundColor: 'silver'})
+    expect(wrapper.find('li').first().hasClass(styles.active)).toEqual(true)
   });
 });

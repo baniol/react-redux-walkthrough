@@ -1,46 +1,42 @@
-.employees {
-
-}
-
-.employees ul {
+.list {
   list-style: none;
   padding-right: 40px;
 }
 
-.employees li {
+.list li {
   border-bottom: 1px solid #ccc;
   font-family: 'Oswald', sans-serif;
   padding: 6px 0;
 }
 
-.employees li:hover {
+.list li:hover {
   background-color: #ddd;
 }
 
-.employees li .info {
+.list li a {
+  color: #000;
+}
+
+.info {
   display: inline-block;
   padding-left: 10px;
 }
 
-.employees li .info .personName {
+.personName {
   font-size: 1.2em;
 }
 
-.employees li .info .personPosition {
+.personPosition {
   font-size: 0.8em;
   color: #aaa;
 }
 
-.employees li .icons {
+.icons {
   display: none;
   float: right;
   padding: 6px 10px 0 0;
 }
 
-.employees li:hover .icons {
+.list li:hover .icons {
   display: inline-block;
-}
-
-.employees li a {
-  color: #000;
 }
