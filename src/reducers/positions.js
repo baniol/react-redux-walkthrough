@@ -1,6 +1,10 @@
-var defaultPositions = ['Software Architect', 'Web Developer', 'Java Developer', 'Project Manager']
-const positions = (state=defaultPositions, action) => {
-  return state
-}
+import { FETCH_POSITIONS } from '../constants/ActionTypes'
 
-export default positions
+export default (state=[], action) => {
+  switch(action.type) {
+    case FETCH_POSITIONS:
+      return action.positions
+    default:
+      return state
+  }
+}

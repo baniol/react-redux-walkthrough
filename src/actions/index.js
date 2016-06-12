@@ -1,89 +1,71 @@
-// import api from './middleware/api'
-import fetch from 'isomorphic-fetch'
+import fetchPlus from '../lib/fetchPlus' // @TODO change name
+import * as types from '../constants/ActionTypes'
 
 export const fetchEmployees = () => {
   return dispatch => {
     dispatch(makeRequest())
-    return fetch('http://localhost:3001/employees')
-      .then(response => response.json())
-      .then(json => dispatch(returnEmployees(json)))
-      .catch((err) => dispatch(requestError(err.toString())))
+    // @TODO to config
+    return fetchPlus('http://localhost:3001/employees')
+    .then(json => dispatch(returnEmployees(json)))
+    .catch(err => {
+      dispatch(requestError(err.toString()))
+    })
+  }
+}
+
+export const fetchPositions = () => {
+  return dispatch => {
+    dispatch(makeRequest())
+    // @TODO to config
+    return fetchPlus('http://localhost:3001/positions')
+      .then(json => dispatch(returnPositions(json)))
+      .catch(err => {
+        dispatch(requestError(err.toString()))
+      })
   }
 }
 
 export const setPositionFilter = (name) => {
   return {
-    type: 'SET_POSITION_FILTER',
+    type: types.SET_POSITION_FILTER,
     name
   }
 }
 
-export const saveEmployee = (data, id) => {
-  const url = id ? `http://localhost:3001/employee/${id}` : `http://localhost:3001/employee`
-  const method = id ? 'POST' : 'PUT'
-  const fetchEmployee = fetch(url, {
-    method: method,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
+export const closeErrors = () => {
   return {
-    type: 'VALIDATE_EMPLOYEE', // @TODO - not used by reducers ?
-    payload: fetchEmployee // @TODO name payload ?
-  }
-}
-
-export const removeEmployee = (id) => {
-  return dispatch => {
-    // dispatch(makeRequest())
-    return fetch(`http://localhost:3001/employee/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(json => {
-      dispatch(fetchEmployees(json.data))
-    })
+    type: types.CLOSE_ERRORS
   }
 }
 
 function makeRequest() {
   return {
-    type: 'MAKE_REQUEST',
-    loader: true
-  }
-}
-
-export const addEmployee = (employee) => {
-  return {
-    type: 'ADD_EMPLOYEE',
-    employee
-  }
-}
-
-export const updateEmployee = (employees) => {
-  return {
-    type: 'UPDATE_EMPLOYEE',
-    employees
-  }
-}
-
-function fieldError(errors) {
-  return {
-    type: 'FIELD_ERROR',
-    errors: errors
+    type: types.MAKE_REQUEST,
+    loader: 'show'
   }
 }
 
 function returnEmployees(employees) {
   return {
-    type: 'EMPLOYEES_LOADED',
+    // @TODO change name, like in previous branches
+    type: types.FETCH_EMPLOYEES,
     employees,
-    loader: false
+    loader: 'hide'
+  }
+}
+
+function returnPositions(positions) {
+  return {
+    type: types.FETCH_POSITIONS,
+    positions,
+    loader: 'hide'
+  }
+}
+
+function requestError(error) {
+  return {
+    type: types.REQUEST_ERROR,
+    error,
+    loader: 'hide'
   }
 }

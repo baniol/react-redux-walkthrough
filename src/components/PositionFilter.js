@@ -1,33 +1,27 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'
+import styles from '../styles/PositionFilter.css'
+import classNames from 'classnames/bind'
 
-let spanStyle = (pos, currentFilter) => {
-  let style = {
-    cursor: 'pointer',
-    padding: '3px 5px'
-  }
-  if (pos === currentFilter) {
-    style.backgroundColor = 'silver'
-  }
-  return style
-}
+const cx = classNames.bind(styles)
 
-const PositionFilter = ({positions, currentFilter, filterPositions}) => (
-  <div>
-    {positions.map(position =>
-      <span
+const PositionFilter = (props) => (
+  <ul className={styles.filter}>
+    {props.positions.map(position =>
+      <li
         key={position}
-        style={spanStyle(position, currentFilter)}
-        onClick={filterPositions.bind(null, position)}
+        className={cx({active: props.currentFilter === position})}
+        onClick={props.setPositionFilter.bind(null, position)}
         >
         {position}
-      </span>
+      </li>
     )}
-  </div>
+  </ul>
 )
 
-PositionFilter.propTypes = {
+PositionFilter.PropTypes = {
   positions: PropTypes.array.isRequired,
-  filterPositions: PropTypes.func.isRequired
+  currentFilter: PropTypes.string.isRequired,
+  setPositionFilter: PropTypes.func.isRequired
 }
 
 export default PositionFilter

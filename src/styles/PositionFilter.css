@@ -1,0 +1,15 @@
+.filter {
+  border-bottom: 1px solid green;
+}
+
+.filter li {
+  font-family: 'Oswald', sans-serif;
+  list-style: none;
+  display: inline-block;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.filter li.active {
+  border-top: 2px solid green;
+}

@@ -1,7 +1,9 @@
 import expect, { createSpy } from 'expect'
 import React from 'react'
 import { shallow } from 'enzyme'
-import { PositionFilter } from '../../components/PositionFilter'
+import sinon from 'sinon'
+import PositionFilter from '../../components/PositionFilter'
+import styles from '../../styles/PositionFilter.css'
 
 let wrapper
 
@@ -10,24 +12,24 @@ describe('PositionFilter component', () => {
     let props = {
       positions: ['Software Architect', 'Web Developer', 'Java Developer', 'Project Manager'],
       currentFilter: 'Web Developer',
-      filterPositions: function (){}
+      setPositionFilter: function (){}
     }
     wrapper = shallow(<PositionFilter {...props} />)
   })
-  it('Should render the span elements', () => {
-    expect(wrapper.find('span').length).toEqual(4)
+  it('Should render the li elements', () => {
+    expect(wrapper.find('li').length).toEqual(4)
   });
-  it('Should trigger an event on span click', () => {
-    let onFilterClick = expect.createSpy()
-    wrapper.setProps({filterPositions: onFilterClick})
-    wrapper.find('span').first().simulate('click');
-    expect(onFilterClick).toHaveBeenCalled();
+  it('Should trigger an event on li click', () => {
+    let onFilterClick = sinon.spy()
+    wrapper.setProps({setPositionFilter: onFilterClick})
+    wrapper.find('li').first().simulate('click');
+    expect(onFilterClick.calledOnce).toEqual(true);
   });
   it('Should have filter item not highlighted', () => {
-    expect(wrapper.find('span').first().props().style).toExclude({backgroundColor: 'silver'})
+    expect(wrapper.find('li').first().hasClass(styles.active)).toEqual(false)
   });
   it('Should highlight the current filter', () => {
     wrapper.setProps({currentFilter: 'Software Architect'})
-    expect(wrapper.find('span').first().props().style).toInclude({backgroundColor: 'silver'})
+    expect(wrapper.find('li').first().hasClass(styles.active)).toEqual(true)
   });
 });

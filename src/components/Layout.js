@@ -1,25 +1,21 @@
-import React from 'react'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import React, {PropTypes} from 'react'
 import Menu from './Menu'
 
-const styles = {
-  container: {
-    textAlign: 'left',
-    width: 500,
-    padding: 50
-  },
-}
+import styles from '../styles/Container.css'
 
-export default (props) => {
+const Layout = (props) => {
   return (
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
-      <div style={styles.container}>
-        <Menu />
-        <div className="container">
-          { props.children }
-        </div>
+    <div className={styles.container}>
+      <Menu />
+      <div>
+        { props.children }
       </div>
-    </MuiThemeProvider>
+    </div>
   )
 }
+
+Layout.PropTypes = {
+  children: PropTypes.node
+}
+
+export default Layout
