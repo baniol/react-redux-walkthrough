@@ -1,5 +1,6 @@
 .filter {
-  border-bottom: 1px solid green;
+  border-bottom: 1px solid;
+  margin-top: 0;
 }
 
 .filter li {
@@ -11,5 +12,5 @@
 }
 
 .filter li.active {
-  border-top: 2px solid green;
+  background-color: #ccc;
 }

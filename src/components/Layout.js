@@ -6,7 +6,7 @@ import styles from '../styles/Container.css'
 const Layout = (props) => {
   return (
     <div className={styles.container}>
-      <Menu location={props.location} />
+      <Menu pathname={props.location.pathname} />
       <div>
         { props.children }
       </div>

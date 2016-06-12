@@ -6,9 +6,10 @@ import Menu from '../../components/Menu'
 
 let wrapper
 
-describe('Employees component', () => {
+describe('Layout component', () => {
   beforeEach(() => {
-    wrapper = shallow(<Layout/>)
+    const location = {pathname: '/'}
+    wrapper = shallow(<Layout location={location} />)
   })
   it('Should render the application', () => {
     expect(wrapper.find(Menu).length).toEqual(1)
