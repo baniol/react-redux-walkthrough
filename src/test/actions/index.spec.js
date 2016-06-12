@@ -4,6 +4,7 @@ import * as actions from '../../actions'
 import nock from 'nock'
 import expect from 'expect'
 import * as types from '../../constants/ActionTypes'
+import config from '../../config'
 
 const mockStore = configureMockStore([thunk])
 const employeeResult = [{
@@ -11,8 +12,6 @@ const employeeResult = [{
   name: 'Reese Hardin',
   position: 'Web Developer'
 }]
-
-// @TODO actions to a separate files - combine?
 
 describe('Actions', () => {
 
@@ -38,15 +37,14 @@ describe('Actions', () => {
   })
 
   describe('fetchEmployees', () => {
-    it('creates FETCH_EMPLOYEES when fetching employees has been done', () => {
-      // @TODO to config
-      nock('http://localhost:3001')
+    it('creates RETURN_EMPLOYEES when fetching employees has been done', () => {
+      nock(config.apiServerUrl)
         .get('/employees')
         .reply(200, employeeResult)
 
       const expectedActions = [
         { type: types.MAKE_REQUEST, loader: 'show' },
-        { type: types.FETCH_EMPLOYEES, loader: 'hide', employees: employeeResult }
+        { type: types.RETURN_EMPLOYEES, loader: 'hide', employees: employeeResult }
       ]
       const store = mockStore({ employees: [] })
 
@@ -59,15 +57,14 @@ describe('Actions', () => {
 
   describe('fetchPositions', () => {
     const positionsData = [ 'Software Architect', 'Web Developer', 'Java Developer', 'Project Manager' ]
-    it('creates FETCH_POSITIONS when fetching positions has been done', () => {
-      // @TODO to config
-      nock('http://localhost:3001')
+    it('creates RETURN_POSITIONS when fetching positions has been done', () => {
+      nock(config.apiServerUrl)
         .get('/positions')
         .reply(200, positionsData)
 
       const expectedActions = [
         { type: types.MAKE_REQUEST, loader: 'show' },
-        { type: types.FETCH_POSITIONS, loader: 'hide', positions: positionsData }
+        { type: types.RETURN_POSITIONS, loader: 'hide', positions: positionsData }
       ]
       const store = mockStore({ employees: [] })
 

@@ -1,11 +1,11 @@
-import fetchPlus from '../lib/fetchPlus' // @TODO change name
+import request from '../lib/fetchPlus'
 import * as types from '../constants/ActionTypes'
+import config from '../config'
 
 export const fetchEmployees = () => {
   return dispatch => {
     dispatch(makeRequest())
-    // @TODO to config
-    return fetchPlus('http://localhost:3001/employees')
+    return request(`${config.apiServerUrl}/employees`)
     .then(json => dispatch(returnEmployees(json)))
     .catch(err => {
       dispatch(requestError(err.toString()))
@@ -16,8 +16,7 @@ export const fetchEmployees = () => {
 export const fetchPositions = () => {
   return dispatch => {
     dispatch(makeRequest())
-    // @TODO to config
-    return fetchPlus('http://localhost:3001/positions')
+    return request(`${config.apiServerUrl}/positions`)
       .then(json => dispatch(returnPositions(json)))
       .catch(err => {
         dispatch(requestError(err.toString()))
@@ -47,8 +46,7 @@ function makeRequest() {
 
 function returnEmployees(employees) {
   return {
-    // @TODO change name, like in previous branches
-    type: types.FETCH_EMPLOYEES,
+    type: types.RETURN_EMPLOYEES,
     employees,
     loader: 'hide'
   }
@@ -56,7 +54,7 @@ function returnEmployees(employees) {
 
 function returnPositions(positions) {
   return {
-    type: types.FETCH_POSITIONS,
+    type: types.RETURN_POSITIONS,
     positions,
     loader: 'hide'
   }
