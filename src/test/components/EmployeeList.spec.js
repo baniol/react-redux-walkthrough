@@ -15,10 +15,6 @@ describe('EmployeeList component', () => {
     wrapper = shallow(<EmployeeList {...props} />)
   })
 
-  it('Should render employee data in the first li as text', () => {
-    console.log(wrapper.find(`.${styles.personName}`).first().text())
-  })
-
   it('Should render the ul and li elements', () => {
     expect(wrapper.find('ul').length).toEqual(1)
     expect(wrapper.find('li').length).toEqual(2)

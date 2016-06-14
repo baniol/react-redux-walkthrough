@@ -7,7 +7,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import reducers from './reducers'
-import Layout from './components/Layout'
+import Layout from './containers/Layout'
 import Employees from './containers/Employees'
 import AddEmployee from './components/AddEmployee'
 

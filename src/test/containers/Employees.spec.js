@@ -4,8 +4,6 @@ import { shallow } from 'enzyme'
 import { Employees, getEmployeeList } from '../../containers/Employees'
 import EmployeeList from '../../components/EmployeeList'
 import PositionFilter from '../../components/PositionFilter'
-import Loader from '../../components/Loader'
-import Error from '../../components/Error'
 import employeeData from '../fixtures/employeesMocked'
 
 let wrapper
@@ -21,13 +19,11 @@ describe('Employees container', () => {
     wrapper = shallow(<Employees {...props} />)
   })
   it('Should have 4 children components', () => {
-    expect(wrapper.children().length).toEqual(4)
+    expect(wrapper.children().length).toEqual(2)
   })
   it('Should render all components', () => {
     expect(wrapper.find(PositionFilter).length).toEqual(1)
     expect(wrapper.find(EmployeeList).length).toEqual(1)
-    expect(wrapper.find(Loader).length).toEqual(1)
-    expect(wrapper.find(Error).length).toEqual(1)
   });
 
   describe('Filtering employee list', () => {

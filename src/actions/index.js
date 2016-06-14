@@ -1,4 +1,4 @@
-import request from '../lib/fetchPlus'
+import request from '../lib/Require'
 import * as types from '../constants/ActionTypes'
 import config from '../config'
 
