@@ -13,6 +13,54 @@ export const fetchEmployees = () => {
   }
 }
 
+export const putEmployee = (data) => {
+  const fetchEmployee = fetch(`${config.apiServerUrl}/employee`, {
+    method: 'PUT',
+    // @TODO - to Request.js
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  return {
+    type: 'VALIDATE_EMPLOYEE', // @TODO - not used by reducers ?
+    payload: fetchEmployee // @TODO name payload ?
+  }
+}
+
+export const postEmployee = (data, id) => {
+  const fetchEmployee = fetch(`${config.apiServerUrl}/employee/${id}`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  return {
+    type: 'VALIDATE_EMPLOYEE', // @TODO - not used by reducers ?
+    payload: fetchEmployee // @TODO name payload ?
+  }
+}
+
+export const removeEmployee = (id) => {
+  return dispatch => {
+    // dispatch(makeRequest())
+    return fetch(`${config.apiServerUrl}/employee/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(json => {
+      dispatch(fetchEmployees(json.data))
+    })
+  }
+}
+
 export const fetchPositions = () => {
   return dispatch => {
     dispatch(makeRequest())
@@ -49,6 +97,20 @@ function returnEmployees(employees) {
     type: types.RETURN_EMPLOYEES,
     employees,
     loader: 'hide'
+  }
+}
+
+export const addEmployee = (employee) => {
+  return {
+    type: 'ADD_EMPLOYEE',
+    employee
+  }
+}
+
+export const updateEmployee = (employees) => {
+  return {
+    type: 'UPDATE_EMPLOYEE',
+    employees
   }
 }
 

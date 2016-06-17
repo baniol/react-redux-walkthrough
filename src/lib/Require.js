@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
-export default (url) => {
-  return fetch(url)
+export default (url, options) => {
+  return fetch(url, options)
   .then(response => {
     if (response.status >= 400) {
       const errorText = `${response.status} : ${response.statusText}`

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchEmployees, fetchPositions, setPositionFilter} from '../actions'
+import { fetchEmployees, removeEmployee, fetchPositions, setPositionFilter} from '../actions'  // @TODO webpack root settings
 import EmployeeList from '../components/EmployeeList'
 import PositionFilter from '../components/PositionFilter'
 
@@ -46,7 +46,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchEmployees: () => dispatch(fetchEmployees()),
     fetchPositions: () => dispatch(fetchPositions()),
-    setPositionFilter: (name) => dispatch(setPositionFilter(name))
+    setPositionFilter: (name) => dispatch(setPositionFilter(name)),
+    removeEmployee: (id) => {dispatch(removeEmployee(id))}
   }
 }
 

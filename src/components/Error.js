@@ -20,7 +20,7 @@ const Error = (props) => {
     )
   }
   return (
-    <div className={cx('error')}>
+    <div className={cx('error')} style={{display: props.errors.length > 0 ? 'block' : 'none'}}>
       {errorMsg}
     </div>
   )

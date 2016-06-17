@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
+import {reducer as formReducer} from 'redux-form';
 import employees from './employees'
 import positions from './positions'
 import positionFilter from './positionFilter'
@@ -11,6 +12,7 @@ export default combineReducers({
   positions,
   positionFilter,
   routing: routerReducer,
+  form: formReducer,
   positions,
   loader,
   errors

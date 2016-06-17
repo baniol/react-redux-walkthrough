@@ -20,7 +20,7 @@ const EmployeeList = (props) => {
           </div>
           <div className={cx('icons')}>
             <Link to={`edit/${person.id}`}><EditIcon size={24} /></Link>
-            <DeleteIcon size={24} style={{cursor: 'pointer'}} />
+            <DeleteIcon size={24} style={{cursor: 'pointer'}} onClick={props.removeEmployee.bind(null, person.id)} />
           </div>
         </li>
       )}
@@ -34,7 +34,8 @@ EmployeeList.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     position: PropTypes.string.isRequired
-  }).isRequired).isRequired
+  }).isRequired).isRequired,
+  removeEmployee: PropTypes.func.isRequired
 }
 
 export default EmployeeList
