@@ -10,7 +10,8 @@ let wrapper
 describe('EmployeeList component', () => {
   beforeEach(() => {
     let props = {
-      employees: employeeData
+      employees: employeeData,
+      removeEmployee: function () {}
     }
     wrapper = shallow(<EmployeeList {...props} />)
   })
