@@ -5,15 +5,6 @@ import { browserHistory } from 'react-router'
 
 class AddEmployeeForm extends Component {
 
-  componentWillMount() {
-    if (this.props.employees.length === 0) {
-      this.props.fetchEmployees()
-    }
-    if (this.props.positions.length === 0) {
-      this.props.fetchPositions()
-    }
-  }
-
   asyncValidate (values, dispatch) {
     return new Promise((resolve, reject) => {
       var promise = this.props.params.id ? dispatch(postEmployee(values, this.props.params.id)) : dispatch(putEmployee(values))

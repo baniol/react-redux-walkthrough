@@ -10,7 +10,8 @@ let wrapper
 describe('EmployeeList component', () => {
   beforeEach(() => {
     let props = {
-      employees: employeeData
+      employees: employeeData,
+      removeEmployee: function () {}
     }
     wrapper = shallow(<EmployeeList {...props} />)
   })
@@ -31,4 +32,5 @@ describe('EmployeeList component', () => {
   it('Should render employee position in the second li as text', () => {
     expect(wrapper.find(`.${styles.personPosition}`).at(1).text()).toEqual('Java Developer')
   })
+  // @TODO remove employee test
 })
