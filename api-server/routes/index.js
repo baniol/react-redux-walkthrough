@@ -43,7 +43,7 @@ router.put('/employee', function(req, res, next) {
     errors._error = 'Add Employee Error';
     setTimeout(function () {
       res.json({status: 400, data: null, errors: errors});
-    }, 1000);
+    }, 2000);
     return;
   }
   var newEmployee = {
@@ -54,7 +54,7 @@ router.put('/employee', function(req, res, next) {
   employeeData.push(newEmployee);
   setTimeout(function () {
     res.json({status: 200, data: newEmployee, errors: null});
-  }, 1500);
+  }, 2000);
 });
 
 router.post('/employee/:id', function(req, res, next) {
@@ -69,7 +69,7 @@ router.post('/employee/:id', function(req, res, next) {
     errors._error = 'Add Employee Error';
     setTimeout(function () {
       res.json({status: 400, data: null, errors: errors});
-    }, 0);
+    }, 2000);
     return;
   }
   var newCollection = employeeData.map(e => {
@@ -82,7 +82,7 @@ router.post('/employee/:id', function(req, res, next) {
   employeeData = newCollection;
   setTimeout(function () {
     res.json({status: 200, data: employeeData, errors: null});
-  }, 0);
+  }, 2000);
 });
 
 module.exports = router;

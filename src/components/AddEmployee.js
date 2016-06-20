@@ -2,6 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form'
 import { putEmployee, addEmployee, postEmployee, updateEmployee, fetchEmployees, fetchPositions } from '../actions'
 import { browserHistory } from 'react-router'
+import classNames from 'classnames/bind'
+import styles from '../styles/Form.css'
+
+const cx = classNames.bind(styles)
 
 class AddEmployeeForm extends Component {
 
@@ -21,6 +25,7 @@ class AddEmployeeForm extends Component {
             else {
               dispatch(addEmployee(json.data))
             }
+            // @TODO transit?
             browserHistory.push('/')
             resolve()
           }
@@ -31,32 +36,27 @@ class AddEmployeeForm extends Component {
   render() {
     const { fields: { name, position }, error, resetForm, handleSubmit, submitting } = this.props
     return (
-      <form onSubmit={handleSubmit(this.asyncValidate.bind(this))}>
-        {error && <div>{error}</div>}
-        <div>
+      <form className={styles.standardForm} onSubmit={handleSubmit(this.asyncValidate.bind(this))}>
+        <div className={cx({'formElement': true,'error': name.touched && name.error})}>
           <label>First Name</label>
-          <div>
-            <input type="text" placeholder="First Name" {...name}/>
-          </div>
-          {name.touched && name.error && <div>{name.error}</div>}
+          {name.touched && name.error && <div className={styles.errorMessage}>{name.error}</div>}
+          <input type="text" placeholder="First Name" {...name}/>
         </div>
-        <div>
+        <div className={cx({'formElement': true,'error': position.touched && position.error})}>
           <label>Position</label>
-          <div>
-            <select {...position}>
-              <option value="">--choose position--</option>
-              {this.props.positions.map(pos =>
-                <option key={pos}>
-                  {pos}
-                </option>
-              )}
-            </select>
-            {position.touched && position.error && <div>{position.error}</div>}
-          </div>
+          {position.touched && position.error && <div className={styles.errorMessage}>{position.error}</div>}
+          <select {...position}>
+            <option value="">-choose position-</option>
+            {this.props.positions.map(pos =>
+              <option key={pos}>
+                {pos}
+              </option>
+            )}
+          </select>
         </div>
         <div>
           <button type="submit" disabled={submitting}>
-            {submitting ? <i/> : <i/>} Submit
+            {submitting ? 'Sending ...' : 'Submit'}
           </button>
         </div>
       </form>

@@ -1,0 +1,70 @@
+.standardForm {
+  width:70%;
+	margin:4% 15%;
+}
+
+.standardForm input[type=text]{
+	margin-bottom: 10px;
+	margin-top: 10px;
+	width:100%;
+	padding: 15px;
+	border-radius:5px;
+	border:1px solid #7ac9b7;
+  font-size: 16px;
+}
+
+.standardForm select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-bottom: 20px;
+	margin-top: 10px;
+	width:100%;
+	padding: 15px;
+	border-radius:5px;
+	border:1px solid #7ac9b7;
+  font-size: 16px;
+}
+
+.standardForm input[type=submit], .standardForm button {
+  margin-top: 20px;
+	margin-bottom: 10px;
+	width:100%;
+	padding: 15px;
+	border-radius:5px;
+	border:1px solid #7ac9b7;
+	background-color: #4180C5;
+	color: aliceblue;
+	font-size:16px;
+	cursor:pointer;
+}
+
+.standardForm button:hover {
+ background-color: black;
+}
+
+.standardForm button:disabled {
+  background-color: #bbb;
+}
+
+.standardForm textarea{
+	width:100%;
+	padding: 15px;
+	margin-top: 10px;
+  border:1px solid #7ac9b7;
+	border-radius:5px;
+	margin-bottom: 20px;
+	resize:none;
+}
+
+.standardForm input[type=text]:focus, .standardForm textarea:focus {
+	border-color: #4697e4;
+}
+
+.errorMessage {
+  color: red;
+}
+
+.formElement.error input, .formElement.error select{
+  border: 1px solid red;
+}

@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import Error from '../components/Error'
 
 import styles from '../styles/Container.css'
+import globalStyles from '../styles/Global.css'
 
 export class Layout extends Component {
 
