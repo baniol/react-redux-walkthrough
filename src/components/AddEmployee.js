@@ -70,9 +70,11 @@ const mapStateToProps = (state, ownProps) => {
     let employee = state.employees.filter(e => e.id == ownProps.params.id)
     initialValues = employee[0]
   }
+  else {
+    initialValues = {name: '', position: ''}
+  }
   return {
     positions: state.positions,
-    employees: state.employees,
     initialValues
   }
 }
