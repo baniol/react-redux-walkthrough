@@ -4,7 +4,7 @@ Example of Redux architecture in form of an Employee List application with filte
 
 The repository is accompanied by a series of posts that mark the road to my understanding of how React-Redux works.
 
-![https://raw.githubusercontent.com/baniol/react-redux-walkthrough/master/images/demo.gif](App Demo)
+![App Demo](https://raw.githubusercontent.com/baniol/react-redux-walkthrough/master/images/demo.gif)
 
 ## Posts and branches
 
